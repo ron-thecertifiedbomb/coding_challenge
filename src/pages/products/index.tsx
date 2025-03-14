@@ -1,27 +1,27 @@
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
-import { Product } from "@/types/types";
+import { Product, RootObject } from "@/types/types";
 import { fetchApi } from "@/service/api";
 import { DataRenderer } from "@/components/DataRenderer";
 import Link from "next/link";
 
 export const getStaticProps: GetStaticProps<{
-  items: Product[];
+  employees: RootObject[];
 }> = async () => {
   try {
     console.log(`[${new Date().toISOString()}] Fetching new data...`);
 
-    const response = await fetchApi<{ products: Product[] }>(
+    const response = await fetchApi<{ employees: RootObject[] }>(
       "https://node-server-d14o.onrender.com/api/"
     );
 
-    const items = response?.products || [];
+    const employees = response?.employees || [];
 
-    if (!items.length) {
+    if (!employees.length) {
       console.error("Error: No products received from API.");
     }
 
     return {
-      props: { items },
+      props: { employees },
       revalidate: 60,
     };
   } catch (error) {
@@ -29,16 +29,16 @@ export const getStaticProps: GetStaticProps<{
       `[${new Date().toISOString()}] Error fetching products:`,
       error
     );
-    return { props: { items: [] } };
+    return { props: { employees: [] } };
   }
 };
 
 export default function ProductListPage({
-  items,
+  employees,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      {items.length > 0 ? (
+      {/* {items.length > 0 ? (
         items.map((item: Product) => (
           <div key={item._id}>
             <DataRenderer
@@ -58,7 +58,7 @@ export default function ProductListPage({
         ))
       ) : (
         <p>No blogs available.</p>
-      )}
+      )} */}
     </>
   );
 }

@@ -4,12 +4,12 @@ import Link from "next/link";
 
 const NavBar: React.FC = () => {
   return (
-    <nav className={style.container}>
+    <nav>
       <div className={style.wrapper}>
         <Link href="/">
           <h1>Barangay Ciudad</h1>
         </Link>
-        <section className={style.links}>
+        <div className={style.links}>
           <p>
             <Link href="/">News</Link>
           </p>
@@ -19,7 +19,7 @@ const NavBar: React.FC = () => {
           <p>
             <Link href="/products">Products</Link>
           </p>
-        </section>
+        </div>
       </div>
     </nav>
   );

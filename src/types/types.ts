@@ -49,4 +49,29 @@ export interface Specifications {
 
 
 
+export interface RootObject {
+ employees: Employee[];
+}
+
+export interface Employee {
+ __v:        number;
+ _id:        string;
+ department: string;
+ employeeId: string;
+ name:       string;
+ position:   string;
+ qrCode:     string;
+ timeLogs:   TimeLog[];
+}
+
+export interface TimeLog {
+ _id:        string;
+ date:       Date;
+ timeIn:     Date;
+ timeOut:    Date;
+ totalHours: number;
+}
+
+
+
 

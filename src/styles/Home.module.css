@@ -27,18 +27,6 @@
   }
 }
 
-.section {
- width: 500;
- margin: auto;
-}
-
-
-.main {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  grid-row-start: 2;
-}
 
 .main ol {
   font-family: var(--font-geist-mono);
@@ -112,11 +100,6 @@ a.secondary {
 
 .footer img {
   flex-shrink: 0;
-}
-
-.navbar {
-  display: flex;
-  flex-direction: column;
 }
 
 /* Enable hover only on non-touch devices */

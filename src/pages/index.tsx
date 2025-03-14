@@ -2,10 +2,12 @@ import React from 'react'
 
 const Home: React.FC = () => {
   return (
-    <div>
-      <p>Home</p>
-    </div>
-  )
+    <main>
+      <section>
+        <p>Home</p>
+      </section>
+    </main>
+  );
 }
 
 export default Home;
