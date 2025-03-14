@@ -27,6 +27,12 @@
   }
 }
 
+.section {
+ width: 500;
+ margin: auto;
+}
+
+
 .main {
   display: flex;
   flex-direction: column;
@@ -106,6 +112,11 @@ a.secondary {
 
 .footer img {
   flex-shrink: 0;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Enable hover only on non-touch devices */
