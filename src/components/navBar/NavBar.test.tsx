@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import NavBar from "./NavBar";
 
+
 describe("NavBar Component", () => {
   it("renders the navigation bar correctly", () => {
     render(<NavBar />);

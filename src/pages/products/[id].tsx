@@ -1,7 +1,7 @@
 import ProductImageCarousel from "@/components/carousel/Carousel";
 import { Product } from "@/types/types";
 import { GetServerSideProps } from "next";
-import Image from "next/image";
+import React from "react";
 
 async function getProduct(id: string): Promise<Product | null> {
   const response = await fetch(
@@ -22,32 +22,30 @@ export default function ProductPage({ product }: { product?: Product }) {
 
   return (
     <div style={{ maxWidth: "800px", margin: "auto", padding: "20px" }}>
+      <ProductImageCarousel images={product.imageUrls} />
       <h1>{product.productName}</h1>
       <p>Manufacturer: {product.manufacturer}</p>
       <p>Category: {product.category}</p>
       <p>Price: ${product.price}</p>
 
-      <ProductImageCarousel images={product.imageUrls} />
+      {product.includedItems.length > 0 && (
+        <>
+          <h4>Included Items</h4>
 
-      <>
-        {product.includedItems.length > 0 && (
-          <>
-            <h4>Included Items</h4>
-            <ul>
-              {product.includedItems.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-          </>
-        )}
+          {product.includedItems.map((item, index) => (
+            <React.Fragment key={index}>
+              <p>{item}</p>
+            </React.Fragment>
+          ))}
+        </>
+      )}
 
-        {product.availableColors?.length > 0 && (
-          <>
-            <h4>Available Colors</h4>
-            <p>{product.availableColors.join(", ")}</p>
-          </>
-        )}
-      </>
+      {product.availableColors?.length > 0 && (
+        <>
+          <h4>Available Colors</h4>
+          <p>{product.availableColors.join(", ")}</p>
+        </>
+      )}
     </div>
   );
 }

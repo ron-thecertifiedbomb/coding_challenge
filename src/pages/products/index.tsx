@@ -43,12 +43,12 @@ export default function ProductListPage({
           <div key={item._id}>
             <DataRenderer
               items={item}
-              excludeKeys={["_id"]}
+              excludeKeys={["_id", "imageUrls"]}
               valueOnlyKeys={["category"]}
             />
             <Link
               href={{
-                pathname: "/product/[id]",
+                pathname: "/products/[id]",
                 query: { id: item._id },
               }}
             >
