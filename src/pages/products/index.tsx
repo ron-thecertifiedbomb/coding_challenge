@@ -1,27 +1,28 @@
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
-import { ProductList } from "@/types/types";
+import { Product } from "@/types/types";
 import { fetchApi } from "@/service/api";
 import { DataRenderer } from "@/components/DataRenderer";
+import Link from "next/link";
 
 export const getStaticProps: GetStaticProps<{
-  items: ProductList[];
+  items: Product[];
 }> = async () => {
   try {
     console.log(`[${new Date().toISOString()}] Fetching new data...`);
 
-    const response = await fetchApi<{ products: ProductList[] }>(
+    const response = await fetchApi<{ products: Product[] }>(
       "https://node-server-d14o.onrender.com/api/"
     );
 
     const items = response?.products || [];
-    
+
     if (!items.length) {
       console.error("Error: No products received from API.");
     }
 
     return {
       props: { items },
-      revalidate: 60, 
+      revalidate: 60,
     };
   } catch (error) {
     console.error(
@@ -38,13 +39,22 @@ export default function ProductListPage({
   return (
     <>
       {items.length > 0 ? (
-        items.map((item: ProductList) => (
-          <DataRenderer
-            key={item._id}
-            items={item}
-            excludeKeys={["_id"]}
-            valueOnlyKeys={["category"]}
-          />
+        items.map((item: Product) => (
+          <div key={item._id}>
+            <DataRenderer
+              items={item}
+              excludeKeys={["_id"]}
+              valueOnlyKeys={["category"]}
+            />
+            <Link
+              href={{
+                pathname: "/product/[id]",
+                query: { id: item._id },
+              }}
+            >
+              View Product
+            </Link>
+          </div>
         ))
       ) : (
         <p>No blogs available.</p>

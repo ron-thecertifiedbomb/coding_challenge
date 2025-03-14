@@ -1,0 +1,62 @@
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+}
+
+.imageContainer {
+  display: "flex";
+  justify-content: "center";
+  align-items: "center";
+}
+
+.arrowLeft {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+
+.arrowRight {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+   color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+
+.dotsContainer {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: gray; /* Default color */
+}
+
+.active {
+  background-color: black; /* Active dot color */
+}
+

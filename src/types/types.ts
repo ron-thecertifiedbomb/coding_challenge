@@ -22,12 +22,12 @@ export interface FoodList {
 
 
 
-export interface ProductList {
+export interface Product {
  _id:             string;
  availableColors: string[];
  category:        string;
  imageUrls:       string[];
- includedItems?:  string[];
+ includedItems:  string[];
  manufacturer:    string;
  price:           number;
  productName:     string;
