@@ -14,9 +14,7 @@ export const getStaticProps: GetStaticProps<{
     );
 
     const items = response?.products || [];
-
-    console.log(`[${new Date().toISOString()}] Received items:`, items);
-
+    
     if (!items.length) {
       console.error("Error: No products received from API.");
     }
@@ -34,7 +32,7 @@ export const getStaticProps: GetStaticProps<{
   }
 };
 
-export default function Page({
+export default function ProductListPage({
   items,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (

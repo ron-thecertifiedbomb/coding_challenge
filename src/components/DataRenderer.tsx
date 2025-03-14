@@ -1,4 +1,5 @@
 import React from "react";
+
 interface DataRendererProps<T extends Record<string, any>> {
   items: T;
   excludeKeys?: string[];
@@ -17,12 +18,10 @@ export const DataRenderer = <T extends Record<string, any>>({
   keyPrefix = "data",
   customContainerStyle = "",
 }: DataRendererProps<T>) => {
-  console.log("items", items);
-
   return (
     <div className={customContainerStyle}>
       {Object.entries(items)
-        .filter(([key]) => !excludeKeys.includes(key))
+        .filter(([key]) => ![...excludeKeys, "_id"].includes(key)) // Always exclude "_id"
         .map(([key, value], index) => {
           const formattedValue =
             typeof value === "object" && value !== null && !Array.isArray(value)
