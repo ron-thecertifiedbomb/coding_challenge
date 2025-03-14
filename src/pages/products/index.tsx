@@ -1,5 +1,4 @@
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
-
 import { ProductList } from "@/types/types";
 import { fetchApi } from "@/service/api";
 import { DataRenderer } from "@/components/DataRenderer";
@@ -24,7 +23,7 @@ export const getStaticProps: GetStaticProps<{
 
     return {
       props: { items },
-      revalidate: 60, // Revalidate every 60 seconds
+      revalidate: 60, 
     };
   } catch (error) {
     console.error(
